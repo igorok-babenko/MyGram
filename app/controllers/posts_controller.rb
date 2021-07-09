@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-    before_action :load_user
+  before_action :load_user
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   #READ
   def index
