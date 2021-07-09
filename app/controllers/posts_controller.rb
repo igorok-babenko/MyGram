@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   def update
     @post = @user.posts.find(params[:id])
     @post.update(post_params)
-    redirect_to post, flash: {success: "Post was updated"}
+    redirect_to user_post_path(@user, @post), flash: {success: "Post was updated"}
   end
 
   #DESTROY

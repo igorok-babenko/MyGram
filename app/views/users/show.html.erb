@@ -1,0 +1,10 @@
+<h1>User info</h1>
+Email: <%= @user.email %>
+<br>
+Name: <%= @user.name %>
+<br>
+<%= @user.bio %>
+<br>
+<%= link_to("Posts", user_posts_path(@user)) %>
+<br>
+<%= link_to("Edit profile", edit_user_path(current_user)) %>
