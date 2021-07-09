@@ -1,5 +1,15 @@
 <% @users.each do |user| %>
-  <% if user.email != current_user.email %>
+  <% if user_signed_in? %>
+    <% if user.email != current_user.email %>
+      <p>
+        <%= link_to user.name, user_path(user) %>
+        <br>
+        <%= user.bio %>
+      </p>
+      <br>
+      <br>
+    <% end %>
+  <% else %>
     <p>
       <%= link_to user.name, user_path(user) %>
       <br>
