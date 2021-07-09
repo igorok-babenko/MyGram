@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+  def after_sign_in_path_for(user)
+    user_posts_path(user)
+  end
+
   private
 
   def authenticate_user!

@@ -16,7 +16,7 @@
         <td><%= image_tag post.image_url %></td>
         <td><%= post.content %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Edit', edit_user_post_path(@user, post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you shure?' } %></td>
       </tr>
     <% end %>
@@ -25,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_user_post_path(@user) %>
