@@ -16,8 +16,12 @@
   <% if current_user.present? %>
     <%= link_to("Profile", user_path(current_user)) %>
     <%= link_to("Sign out", destroy_user_session_path) %>
+    <%= link_to("Users", root_path) %>
 
     <br>
+  <% else %>
+    <%= link_to("Sign_up", new_user_registration_path) %>
+    <%= link_to "Sign_in", new_user_session_path %>
   <% end %>
 
     <%= yield %>
