@@ -45,10 +45,19 @@ class PostsController < ApplicationController
     redirect_to action: :index
   end
 
+  #LIKES
+  def like
+    @post = @user.posts.find(params[:id])
+    @likes = @post.likes
+    @post.update(likes: :@likes+1)
+
+    redirect_to user_post_path(@user, @post)
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:content, :likes, :image)
+    params.require(:post).permit(:content, :image)
   end
 
   def load_user

@@ -25,6 +25,8 @@ Name: <%= @user.name %>
   <% if @flag == false %>
     <%= link_to("Follow", follows_path(following_id: @user.id), method: :post) %>
   <% else %>
-    <%= link_to("Unfollow", follows_path(following_id: @user.id), method: :post) %>
+    <%= link_to("Unfollow", follow_path(follower_id: current_user.id,following_id: @user.id),
+                method: :delete,
+                data: { confirm: "Are you sure?" }) %>
   <% end %>
 <% end %>

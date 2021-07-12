@@ -9,4 +9,11 @@ class FollowsController < ApplicationController
 
     redirect_to user_followers_path(current_user)
   end
+
+  def destroy
+    @follow = Follow.find_by(params[follower_id: :follower_id, following_id: :following_id])
+    @follow.destroy
+
+    redirect_to action: :index
+  end
 end
