@@ -15,7 +15,7 @@
   <br>
   <% if current_user.present? %>
     <%= link_to("Profile", user_path(current_user)) %>
-    <%= link_to("Sign out", destroy_user_session_path) %>
+    <%= link_to("Sign out", destroy_user_session_path, method: :delete) %>
     <%= link_to("All users", root_path) %>
 
     <br>
