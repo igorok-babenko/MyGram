@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     resources :followers, only: :index
     resources :followings, only: :index
     resources :posts do
-      resources :likes, only: [:like]
       resources :comments
     end
   end
