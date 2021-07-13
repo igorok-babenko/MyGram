@@ -11,6 +11,8 @@ Name: <%= @user.name %>
 <br>
 <%= link_to("Posts", user_posts_path(@user)) %>
 <br>
+<%= link_to("Feed", feed_posts_path(user_id: @user)) %>
+<br>
 <%= link_to("followers", user_followers_path(@user) )%>
 (<%= @user.followers.count %>)
 <%= link_to("followings", user_followings_path(@user) ) %>
