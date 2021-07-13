@@ -12,22 +12,28 @@
 
 <img src="/placeholders/like.png">
 (<%= @post.likes.count %>)
-<% @post.likes.each do |like| %>
-  <% if like.user_id == current_user.id && like.post_id == @post.id %>
-    <% @flag = true %>
+<% if current_user.present? %>
+  <% @post.likes.each do |like| %>
+    <% if like.user_id == current_user.id && like.post_id == @post.id %>
+      <% @flag = true %>
+    <% end %>
   <% end %>
-<% end %>
-<% if @flag == false %>
-  <%= link_to("Like", likes_path(post_id: @post.id, user_id: @user.id), method: :post) %>
+  <% if @flag == false %>
+    <%= link_to("Like", likes_path(post_id: @post.id, user_id: @user.id), method: :post) %>
+  <% else %>
+    <%= link_to("Dislike", like_path(post_id: @post.id, user_id: @user.id), method: :delete) %>
+  <% end %>
 <% else %>
-  <%= link_to("Dislike", like_path(post_id: @post.id, user_id: @user.id), method: :delete) %>
+  <%= link_to("Like", likes_path(post_id: @post.id, user_id: @user.id), method: :post) %>
 <% end %>
 
 <h2>Comments</h2>
 <%= render @post.comments %>
 
-<h2>Add a comment</h2>
-<%= render 'comments/form' %>>
+<% if current_user.present? %>
+  <h2>Add a comment</h2>
+  <%= render 'comments/form' %>
+<% end %>
 
 <% if current_user == @user %>
   <%= link_to 'Edit', edit_user_post_path(@user, @post) %>

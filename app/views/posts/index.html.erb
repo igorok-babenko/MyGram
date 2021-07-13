@@ -7,7 +7,7 @@
   <tr>
     <th>Photo</th>
     <th>Description</th>
-    <th colspan="4"></th>
+    <th colspan="3"></th>
   </tr>
   </thead>
   <tbody>
@@ -20,7 +20,10 @@
         <td><%= link_to 'Edit', edit_user_post_path(@user, post) %></td>
         <td><%= link_to 'Destroy', user_post_path(@user, post), method: :delete, data: { confirm: 'Are you shure?' } %></td>
       <% end %>
-      <td><img src="/placeholders/like.png"> (<%= post.likes.count %>)</td>
+      <td>
+        <img src="/placeholders/like.png">
+        (<%= post.likes.count %>)
+      </td>
     </tr>
   <% end %>
   </tbody>
