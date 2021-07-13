@@ -16,7 +16,7 @@
       <td><%= image_tag post.image_url %></td>
       <td><%= post.content %></td>
       <td><%= link_to 'Show', user_post_path(post.user_id, post) %></td>
-      <td><img src="/placeholders/like.png"></td>
+      <td><img src="/placeholders/like.png">(<%= post.likes.count %>)</td>
     </tr>
   <% end %>
   </tbody>

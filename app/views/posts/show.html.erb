@@ -11,6 +11,17 @@
 </p>
 
 <img src="/placeholders/like.png">
+(<%= @post.likes.count %>)
+<% @post.likes.each do |like| %>
+  <% if like.user_id == current_user.id && like.post_id == @post.id %>
+    <% @flag = true %>
+  <% end %>
+<% end %>
+<% if @flag == false %>
+  <%= link_to("Like", likes_path(post_id: @post.id, user_id: @user.id), method: :post) %>
+<% else %>
+  <%= link_to("Dislike", like_path(post_id: @post.id, user_id: @user.id), method: :delete) %>
+<% end %>
 
 <h2>Comments</h2>
 <%= render @post.comments %>

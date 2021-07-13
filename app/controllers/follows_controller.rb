@@ -12,7 +12,7 @@ class FollowsController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @follow = Follow.where(following_id: @user.id, follower_id: current_user.id). first!.id
+    @follow = Follow.find_by(following_id: @user.id, follower_id: current_user.id).id
     Follow.destroy(@follow)
 
     redirect_to user_path(@user)

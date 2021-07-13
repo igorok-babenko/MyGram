@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @flag = false
     @post = @user.posts.find(params[:id])
   end
 
