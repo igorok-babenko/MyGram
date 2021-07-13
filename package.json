@@ -11,9 +11,9 @@
     "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
+  "stack": "heroku-18",
   "devDependencies": {
-    "webpack-dev-server": "^3.11.2",
-    "stack": "heroku-18"
+    "webpack-dev-server": "^3.11.2"
   }
 }
 
