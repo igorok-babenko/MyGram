@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "users#index"
 
   resources :follows, only: [:create, :destroy]
+  resources :feed_posts, only: [:index]
 
   resources :users, only: [:show, :edit, :update] do
     resources :followers, only: :index
