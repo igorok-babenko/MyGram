@@ -1,0 +1,19 @@
+current directory: /home/igor/Rails_apps/MyGram/vendor/bundle/ruby/2.7.0/gems/puma-5.3.2/ext/puma_http11
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20210716-24840-a996uq.rb extconf.rb
+checking for BIO_read() in -lcrypto... no
+checking for BIO_read() in -llibeay32... no
+creating Makefile
+
+current directory: /home/igor/Rails_apps/MyGram/vendor/bundle/ruby/2.7.0/gems/puma-5.3.2/ext/puma_http11
+make "DESTDIR=" clean
+
+current directory: /home/igor/Rails_apps/MyGram/vendor/bundle/ruby/2.7.0/gems/puma-5.3.2/ext/puma_http11
+make "DESTDIR="
+compiling http11_parser.c
+compiling mini_ssl.c
+compiling puma_http11.c
+linking shared-object puma/puma_http11.so
+
+current directory: /home/igor/Rails_apps/MyGram/vendor/bundle/ruby/2.7.0/gems/puma-5.3.2/ext/puma_http11
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20210716-24840-lf2qgh/puma
