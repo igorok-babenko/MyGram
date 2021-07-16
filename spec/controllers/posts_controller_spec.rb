@@ -77,4 +77,18 @@ RSpec.describe PostsController, type: :controller do
       it { expect {subject}.not_to change { Post.count } }
     end
   end
+
+  describe '#edit' do
+    let!(:post) { create :post, user: user }
+    let(:params) { { id: post, user_id: user } }
+
+    subject { process :edit, method: :get, params: params }
+
+    it { is_expected.to render_template(:edit) }
+
+    it 'assigns server policy' do
+      subject
+      expect(assigns :post).to eq post
+    end
+  end
 end
