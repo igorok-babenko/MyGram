@@ -1,4 +1,7 @@
 require 'rails_helper'
+require 'database_cleaner/active_record'
+
+DatabaseCleaner.strategy = :truncation
 
 RSpec.describe PostsController, type: :controller do
   let(:user) { create :user }
@@ -125,3 +128,5 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 end
+
+DatabaseCleaner.clean
