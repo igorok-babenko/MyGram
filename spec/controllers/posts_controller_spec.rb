@@ -70,7 +70,7 @@ RSpec.describe PostsController, type: :controller do
 
     context 'when params invalid' do
       let(:params) do
-        { user_id: user.id, post: { title: nil } }
+        { user_id: user.id, post: { content: nil } }
       end
 
       it { is_expected.to render_template :new }
@@ -89,6 +89,39 @@ RSpec.describe PostsController, type: :controller do
     it 'assigns server policy' do
       subject
       expect(assigns :post).to eq post
+    end
+  end
+
+  describe '#update' do
+    let!(:post) { create :post, user: user }
+    let(:params) { { id: post, user_id: user, post: { content: 'Some title' } } }
+
+    subject { process :update, method: :put, params: params }
+
+    it { is_expected.to redirect_to(user_post_path(assigns(:user), assigns(:post))) }
+
+    it 'updates post' do
+      expect { subject }.to change { post.reload.content }.to('Some title')
+    end
+
+    context 'with bad params' do
+      let(:params) { { id: post, user_id: user, post: { content: '' } } }
+
+      it 'does not update post' do
+        expect { subject }.not_to change { post.reload.content }
+      end
+    end
+  end
+
+  describe '#destroy' do
+    let!(:post) { create :post, user: user }
+    let(:params) { { id: post, user_id: user } }
+
+    subject { process :destroy, method: :delete, params: params }
+    
+    it 'destroy post' do
+      expect { subject }.to change { Post.count }.by(-1)
+      is_expected.to redirect_to(user_posts_path(user_id: user))
     end
   end
 end
