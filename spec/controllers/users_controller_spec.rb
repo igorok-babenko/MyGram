@@ -75,7 +75,16 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe '#destroy' do
+    let!(:user) { create :user }
+    let(:params) { { id: user } }
+
+    subject { process :destroy, method: :delete, params: params }
   
+    it 'destroy user' do
+      expect { subject }.to change { User.count }.by(-1)
+    end
+  end
 end
 
 DatabaseCleaner.clean
