@@ -28,6 +28,24 @@ RSpec.describe UsersController, type: :controller do
 
     it { is_expected.to render_template(:show) }
   end
+
+  describe '#edit' do
+    let(:params) { { id: user } }
+
+    subject { process :edit, method: :get, params: params }
+
+    it { is_expected.to render_template(:edit) }
+
+    it 'assigns @user' do
+      subject
+      expect(assigns(:user)).to eq(user)
+    end
+
+    it 'assigns server policy' do
+      subject
+      expect(assigns :user).to eq user
+    end
+  end
 end
 
 DatabaseCleaner.clean
