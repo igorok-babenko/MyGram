@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :follows, only: [:create, :destroy]
   resources :feed_posts, only: [:index]
 
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:show, :edit, :update, :destroy] do
     resources :followers, only: :index
     resources :followings, only: :index
     resources :posts do
